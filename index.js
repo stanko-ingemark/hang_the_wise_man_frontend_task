@@ -16,9 +16,10 @@ const randomUser =  () => NAMES[random(NAMES.length -1)];
 
 axios.get(QUOTES_URL).then(result => {
 	const quotes = result.data.results;
-	const quoteData = quotes.map(quote => {
+	const quoteData = quotes.map((quote, index) => {
 	const numUniqueChars = countUniqueChars(quote.content);
 	return {
+		id: index,
 		quoteId: quote._id,
 		length: quote.length,
 		uniqueCharacters: numUniqueChars,
